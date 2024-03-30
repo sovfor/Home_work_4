@@ -1,4 +1,4 @@
-public class NewDataContainer<T> implements GetValue<T>{
+public class NewDataContainer<T>{
     private  T[] c;
 
     private T a;
@@ -47,9 +47,9 @@ public class NewDataContainer<T> implements GetValue<T>{
 
     }
 
-    @Override
-    public T getValue() {
-        return a;// Добавил интерфейс для расширения класса. Используется метод открытости/закрытости
+
+    public T getValue(Integer num) {
+        return c[num];
     }
 
     public T[] get(){
