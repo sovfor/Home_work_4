@@ -1,22 +1,17 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class DataContainer<T> {
+public class NewDataContainer<T> implements GetValue<T>{
     private  T[] c;
 
     private T a;
 
 
-    public DataContainer(int size){
-       T[] c = (T[]) new Object [size];
-       this.c = c;
+    public NewDataContainer(int size){
+        T[] c = (T[]) new Object [size];
+        this.c = c;
     }
 
-    public  DataContainer(){
+    public  NewDataContainer(){
         this(1);
     }
-
-
     public void add(T object){
         boolean isEmpty = false;
         for(int i = 0; i < c.length;i++){
@@ -39,19 +34,12 @@ public class DataContainer<T> {
 
 
     }
-
-    public T get(int num){
-        return c[num];
-    }
-
-
-
     public void remove(int num){
         T[] newArr = (T[]) new Object [c.length - 1];
         int j = 0;
         for(int i = 0; i < c.length; i++){
             if(i != num){
-               newArr[j++] = c[i];
+                newArr[j++] = c[i];
 
             }
         }
@@ -59,7 +47,12 @@ public class DataContainer<T> {
 
     }
 
-    public Integer getSize(){
-        return c.length;
+    @Override
+    public T getValue() {
+        return a;// Добавил интерфейс для расширения класса. Используется метод открытости/закрытости
+    }
+
+    public T[] get(){
+        return c;
     }
 }
